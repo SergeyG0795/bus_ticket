@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Расписание автобусов{% endblock %}
+
+{% block content %}
+    <section id="schedule">
+    <h2>Расписание автобусов</h2>
+
+    {% if buses %}
+        <table>
+            <thead>
+            <tr>
+                <th>Атобус</th>
+                <th>Маршрут</th>
+                <th>Отправление</th>
+                <th>Прибытие</th>
+                <th>Стоимость</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bus in buses %}
+                <tr>
+                    <td>{{ bus.bus_name }}</td>
+                    <td>{{ bus.from_city.city_name }} - {{ bus.to_city.city_name }}</td>
+                    <td>{{ bus.departure_time|date:"D, d M Y H:i" }}</td>
+                    <td>{{ bus.arrival_time|date:"D, d M Y H:i" }}</td>
+                    <td>{{ bus.price }}</td>
+                    <td>
+                        <a href="{% url 'reserve_ticket' bus.pk %}">Забронировать</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Извините, нет доступных автобусов.</p>
+    {% endif %}
+    </section>
+{% endblock %}

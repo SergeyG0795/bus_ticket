@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход в систему{% endblock %}
+
+{% block content %}
+    <section id="login">
+        <h2>Вход в систему</h2>
+
+        <form method="post" action="{% url 'user_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Войти">
+        </form>
+
+
+    </section>
+{% endblock %}

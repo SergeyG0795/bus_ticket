@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Билет успешно забронирован</h2>
+    <p>Пассажир: {{ ticket.user.username }}</p>
+    <p>Маршрут:{{ ticket.bus.from_city.city_name }}-{{ ticket.bus.to_city.city_name }}</p>
+    <p>Время отправления: {{ ticket.bus.departure_time }}</p>
+    <p>Время прибытия: {{ ticket.bus.arrival_time }}</p>
+
+    <a href="{% url 'schedule' %}">Вернуться на главную</a>
+
+{% endblock %}

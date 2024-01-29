@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% extends 'base.html' %}
+
+{% block title %}Бронирование билета{% endblock %}
+
+{% block content %}
+    <section id="book_ticket">
+        <h2>Бронирование билета</h2>
+
+        {% if available_seats %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Место</th>
+                    <th>Цена</th>
+                    <th>Действие</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for seat in available_seats %}
+                    <tr>
+                        <td>{{ seat.seat_number }}</td>
+                        <td>{{ seat.price }}</td>
+                        <td>
+                            <a href="{% url 'confirm_reservation' seat.pk %}">Забронировать</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Извините, нет доступных мест для бронирования.</p>
+        {% endif %}
+    </section>
+{% endblock %}
+
+
+
+{% block content %}
+    <h2>Бронирование билета</h2>
+    <p>Автобус: {{ bus.bus_name }}</p>
+    <p>Отправление из: {{ bus.from_city.city_name }}</p>
+    <p>Прибытие в: {{ bus.to_city.city_name }}</p>
+    <p>Время отправления: {{ bus.departure_time }}</p>
+    <p>Время прибытия: {{ bus.arrival_time }}</p>
+
+    <form method="post" action="{% url 'reserve_ticket' bus.pk %}">
+        {% csrf_token %}
+        <button type="submit">Забронировать</button>
+    </form>
+    {% if messages %}
+        <div>{{ messages }}</div>
+    {% endif %}
+{% endblock %}
+

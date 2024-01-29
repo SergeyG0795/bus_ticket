@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Reservation System</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Bus Reservation System</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#booking">Book a Bus</a></li>
+            <li><a href="#schedule">Bus Schedule</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#register">Register</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="booking">
+            <h2>Bus Booking</h2>
+            <!-- Форма для бронирования автобуса -->
+{#            <form action="{% url 'book_bus' %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                <!-- Добавьте поля формы здесь -->#}
+{#                <input type="submit" value="Book Now">#}
+{#            </form>#}
+        </section>
+
+        <section id="schedule">
+            <h2>Bus Schedule</h2>
+            <!-- Расписание автобусов -->
+            <!-- Добавьте таблицу с расписанием здесь -->
+        </section>
+
+        <section id="profile">
+            <h2>User Profile</h2>
+            <!-- Личный кабинет пользователя -->
+            <!-- Добавьте информацию о пользователе здесь -->
+        </section>
+
+        <section id="register">
+            <h2>Register</h2>
+            <!-- Форма регистрации и редактирования пользователя -->
+{#            <form action="{% url 'register' %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                <!-- Добавьте поля формы для регистрации и редактирования здесь -->#}
+{#                <input type="submit" value="Register">#}
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bus Reservation System</p>
+    </footer>
+</body>
+
+</html>
